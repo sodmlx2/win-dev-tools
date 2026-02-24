@@ -1,6 +1,9 @@
 # win-docker-intro
 Example of .ps1 script to install docker utils on Windows Plataform and install Portainer platform.
 
+## Docker commands.
+* Download Docker Desktop -> https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?
+
 ## testing with portainer image.
 * remove ALL schema portainer.
 ```bash
