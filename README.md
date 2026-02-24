@@ -1,4 +1,4 @@
-# win-docker-intro
+# win-wsl-dev
 Example of .ps1 script to install wsl and docker utils on Windows Plataform and install Portainer platform.
 
 ## Docker commands.
