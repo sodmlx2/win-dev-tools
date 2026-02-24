@@ -10,6 +10,7 @@ docker volume rm portainer_data
 ```
 
 ## WSL commands.
+* Download Linux Kernel v2 WSL -> https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
 ```bash
 wsl --status
 wsl --update
