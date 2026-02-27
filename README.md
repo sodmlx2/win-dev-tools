@@ -12,6 +12,8 @@ docker rmi portainer/portainer-ce
 docker volume rm portainer_data
 ```
 
+*** Access https://localhost:9443
+
 ## WSL commands.
 * Download Linux Kernel v2 WSL -> https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
 ```bash
