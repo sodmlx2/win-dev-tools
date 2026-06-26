@@ -47,3 +47,5 @@ wsl --install -d Debian
 
 # Example of script(ps1) to install WSL on Windows Plataform.
 ./install_wsl.ps1
+
+PowerShell -ExecutionPolicy Bypass -File .\dism.ps1
