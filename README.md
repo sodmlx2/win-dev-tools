@@ -4,6 +4,7 @@
 * Objetivo: Executar comandos basicos do linux e criar programas em (C/C++ & Python).
 
 ## Listando Recursos.
+
 * "Microsoft-Windows-Subsystem-Linux"
 * "VirtualMachinePlatform"
 * "HypervisorPlatform"
