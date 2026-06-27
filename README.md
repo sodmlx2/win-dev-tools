@@ -14,7 +14,6 @@ Obtendo a lista de Recursos via PowerShell:
 ```powershell
 dism /online /get-features /format:table
 ```
-
 ```powershell
 Get-WindowsOptionalFeature -Online
 ```
