@@ -13,6 +13,12 @@
 ```powershell
 dism /online /get-features /format:table
 ```
+ou
+
+```powershell
+Get-WindowsOptionalFeature -Online
+```
+
 ## Configuração: Microsoft-Windows-Subsystem-Linux.
 * Download Linux Kernel v2 WSL -> https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
 
