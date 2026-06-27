@@ -10,6 +10,7 @@
 * "Microsoft-Hyper-V"
 * "Microsoft-Hyper-V-All"
 
+
 Obtendo a lista de Recursos via DISM.
 ```powershell
 dism /online /get-features /format:table
