@@ -13,8 +13,6 @@
 ```powershell
 dism /online /get-features /format:table
 ```
-ou
-
 ```powershell
 Get-WindowsOptionalFeature -Online
 ```
