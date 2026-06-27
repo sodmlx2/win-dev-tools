@@ -10,12 +10,12 @@
 * "Microsoft-Hyper-V"
 * "Microsoft-Hyper-V-All"
 
-### Obtendo a lista de Recursos via DISM.
+## Obtendo a lista de Recursos via DISM.
 ```powershell
 dism /online /get-features /format:table
 ```
 
-### Obtendo a lista de Recursos via "Get-WindowsOptionalFeature"
+## Obtendo a lista de Recursos via "Get-WindowsOptionalFeature"
 ```powershell
 Get-WindowsOptionalFeature -Online
 ```
