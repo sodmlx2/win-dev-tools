@@ -11,7 +11,7 @@
 * "Microsoft-Hyper-V-All"
 
 ```powershell dism /online /get-features /format:table
-```
+```powershell
 
 ## Containers:
 * Docker.
