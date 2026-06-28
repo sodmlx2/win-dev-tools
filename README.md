@@ -11,6 +11,10 @@ Obtendo informações sobre a máquina local:
 systeminfo
 ```
 
+```cmd
+taskmgr
+```
+
 ## Recursos de Virtualização.
 * "Microsoft-Windows-Subsystem-Linux",
 * "VirtualMachinePlatform",
