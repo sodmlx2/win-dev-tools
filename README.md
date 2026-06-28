@@ -26,14 +26,14 @@ wsl --install
 wsl --status
 wsl --update
 ```
-- Download Linux Kernel v2 WSL.
+### Download Linux Kernel v2 WSL.
 * https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
 
 ```powershell
 wsl --list --online
 wsl --install -d Debian
 ```
-- Guia Oficial da Microsoft
+### Guia Oficial da Microsoft
 * https://learn.microsoft.com/pt-br/windows/wsl/install
 * 
 ## Containers:
