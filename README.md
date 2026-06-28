@@ -4,6 +4,7 @@
 * Objetivo: Executar comandos basicos do linux e criar programas em (C/C++ & Python).
 
 ## Observando os Recursos.
+* Validando suporte a virtualização e arquitetura da máquina.
 * Pressione "Win+R" e digite no prompt "cmd" e pressione ENTER.
 
 Obtendo informações sobre a máquina local:
