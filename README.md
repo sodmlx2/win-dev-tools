@@ -3,12 +3,19 @@
 ## Ambiente de Desenvolvimento.
 * Objetivo: Executar comandos basicos do linux e criar programas em (C/C++ & Python).
 
-## Listando Recursos.
+## Observando os Recursos.
+* Pressione "Win+R" e digite no prompt "cmd" e pressione ENTER.
 
-* "Microsoft-Windows-Subsystem-Linux"
-* "VirtualMachinePlatform"
-* "HypervisorPlatform"
-* "Microsoft-Hyper-V"
+Obtendo informações sobre a máquina local:
+```cmd
+systeminfo
+```
+
+## Recursos de Virtualização.
+* "Microsoft-Windows-Subsystem-Linux",
+* "VirtualMachinePlatform",
+* "HypervisorPlatform",
+* "Microsoft-Hyper-V",
 * "Microsoft-Hyper-V-All"
 
 Obtendo a lista de Recursos via PowerShell:
