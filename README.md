@@ -38,8 +38,12 @@ Instala o WSL e habilita o suporte a VirtualMachinePlatform.
 wsl --install
 ```
 
+Verifica se os recursos estão instalados.
 ```powershell
 wsl --status
+```
+Atualiza o WSL.
+```powershell
 wsl --update
 ```
 ### Download Linux Kernel v2 WSL.
