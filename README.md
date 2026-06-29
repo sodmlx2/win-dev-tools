@@ -27,8 +27,14 @@ Obtendo a lista de Recursos via PowerShell:
 ```powershell
 dism /online /get-features /format:table
 ```
+
 ```powershell
 Get-WindowsOptionalFeature -Online
+```
+## Habilita os recursos via script.
+
+```powershell
+PowerShell -ExecutionPolicy Bypass -File .\dism.ps1
 ```
 
 ## Configuração: Microsoft-Windows-Subsystem-Linux.
@@ -75,5 +81,4 @@ wsl --install -d Debian
 ## Instalacao para ambientes sem suporte.
 * Instalando suporte a comandos basicos do linux via MY2S e Cygwin.
 
-# Example of script(ps1) to install WSL on Windows Plataform.
-PowerShell -ExecutionPolicy Bypass -File .\dism.ps1
+
