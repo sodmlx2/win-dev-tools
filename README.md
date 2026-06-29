@@ -33,8 +33,11 @@ Get-WindowsOptionalFeature -Online
 
 ## Configuração: Microsoft-Windows-Subsystem-Linux.
 
+Instala o WSL e habilita o suporte a VirtualMachinePlatform.
 ```powershell
 wsl --install
+```
+```powershell
 wsl --status
 wsl --update
 ```
