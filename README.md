@@ -37,6 +37,7 @@ Instala o WSL e habilita o suporte a VirtualMachinePlatform.
 ```powershell
 wsl --install
 ```
+
 ```powershell
 wsl --status
 wsl --update
