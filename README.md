@@ -23,16 +23,17 @@ taskmgr
 * "Microsoft-Hyper-V",
 * "Microsoft-Hyper-V-All"
 
-Obtendo a lista de Recursos via PowerShell:
+Obtendo a lista de Recursos via comando DISM:
 ```powershell
 dism /online /get-features /format:table
 ```
 
+Obtendo a lista de Recursos via PowerShell:
 ```powershell
 Get-WindowsOptionalFeature -Online
 ```
 
-### Habilita os recursos via script.
+Habilita os recursos via script.
 ```powershell
 PowerShell -ExecutionPolicy Bypass -File .\dism.ps1
 ```
