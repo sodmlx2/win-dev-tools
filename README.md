@@ -38,8 +38,8 @@ Habilita os recursos via script.
 PowerShell -ExecutionPolicy Bypass -File .\dism.ps1
 ```
 
-### Configuração: Microsoft-Windows-Subsystem-Linux.
-Instala o WSL e habilita o suporte a VirtualMachinePlatform.
+### Microsoft-Windows-Subsystem-Linux.
+Instalação do WSL e suporte a VirtualMachinePlatform.
 * https://learn.microsoft.com/pt-br/windows/wsl/install
 
 Inicia a instalação do WSL e verifica os recursos adicionais.
