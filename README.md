@@ -63,10 +63,8 @@ PowerShell -ExecutionPolicy Bypass -File .\wsl.ps1
 ```
 
 ### Linux Kernel v2 WSL.
-Download do patch.
+Download do patch kernel e instalação do Linux.
 * https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
-
-### Instalando uma Distribuição Linux WSL.  
 
 Listando distribuições.
 ```powershell
