@@ -67,18 +67,5 @@ wsl --install -d Debian
 * Docker.
 
 ## Docker commands.
-* Download Docker Desktop -> https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?
-
-## Hyper-V.
-* WSL (Windows Subsystem Linux v2).
-
-## Virtualizacao.
-* Parallels, VMWARE Fusion, Virtualbox, QEMU (Linux + Docker + DevTools)
-
-## Instalacao para ambientes com suporte.
-* Instalacao VisualStudio Community (Linux, C/C++, Compiladores, DesktopAPP or Mobile).
-
-## Instalacao para ambientes sem suporte.
-* Instalando suporte a comandos basicos do linux via MY2S e Cygwin.
-
-
+Download Docker Desktop:
+* https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?
