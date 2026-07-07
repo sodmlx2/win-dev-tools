@@ -40,8 +40,6 @@ PowerShell -ExecutionPolicy Bypass -File .\dism.ps1
 
 ### Configuração: Microsoft-Windows-Subsystem-Linux.
 Instala o WSL e habilita o suporte a VirtualMachinePlatform.
-
-### Guia Oficial da Microsoft
 * https://learn.microsoft.com/pt-br/windows/wsl/install
 
 Inicia a instalação do WSL e verifica os recursos adicionais.
