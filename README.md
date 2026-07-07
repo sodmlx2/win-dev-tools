@@ -61,8 +61,14 @@ wsl --update
 * https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
 
 ### Instalando uma Distribuição Linux WSL.  
+
+Listando distribuições.
 ```powershell
 wsl --list --online
+```
+
+Instalando o Linux Debian.
+```powershell
 wsl --install -d Debian
 ```
 
