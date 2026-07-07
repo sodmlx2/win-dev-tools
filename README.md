@@ -1,9 +1,9 @@
 # Windows.
 
-## Ambiente de Desenvolvimento.
+### Ambiente de Desenvolvimento.
 * Objetivo: Executar comandos basicos do linux e criar programas em (C/C++ & Python).
 
-## Observando os Recursos.
+### Observando os Recursos.
 * Valide o suporte a virtualização (BIOS).
 * Pressione "Win+R" e digite no prompt "cmd" e pressione ENTER.
 
@@ -16,7 +16,7 @@ systeminfo
 taskmgr
 ```
 
-## Recursos de Virtualização.
+### Recursos de Virtualização.
 * "Microsoft-Windows-Subsystem-Linux",
 * "VirtualMachinePlatform",
 * "HypervisorPlatform",
@@ -31,13 +31,13 @@ dism /online /get-features /format:table
 ```powershell
 Get-WindowsOptionalFeature -Online
 ```
-## Habilita os recursos via script.
+### Habilita os recursos via script.
 
 ```powershell
 PowerShell -ExecutionPolicy Bypass -File .\dism.ps1
 ```
 
-## Configuração: Microsoft-Windows-Subsystem-Linux.
+### Configuração: Microsoft-Windows-Subsystem-Linux.
 
 Instala o WSL e habilita o suporte a VirtualMachinePlatform.
 ```powershell
@@ -63,9 +63,6 @@ wsl --install -d Debian
 ### Guia Oficial da Microsoft
 * https://learn.microsoft.com/pt-br/windows/wsl/install
   
-## Containers:
-* Docker.
-
-## Docker commands.
+### Docker.
 Download Docker Desktop:
 * https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?
