@@ -53,9 +53,15 @@ Verifica se os recursos estão instalados.
 ```powershell
 wsl --status
 ```
+
 Atualiza o WSL.
 ```powershell
 wsl --update
+```
+
+Habilita os recursos via script.
+```powershell
+PowerShell -ExecutionPolicy Bypass -File .\wsl.ps1
 ```
 
 ### Download Linux Kernel v2 WSL.
@@ -76,3 +82,8 @@ wsl --install -d Debian
 ### Docker.
 Download Docker Desktop:
 * https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?
+
+Habilita os recursos via script.
+```powershell
+PowerShell -ExecutionPolicy Bypass -File .\docker.ps1
+```
