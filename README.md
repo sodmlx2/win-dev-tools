@@ -31,15 +31,18 @@ dism /online /get-features /format:table
 ```powershell
 Get-WindowsOptionalFeature -Online
 ```
-### Habilita os recursos via script.
 
+### Habilita os recursos via script.
 ```powershell
 PowerShell -ExecutionPolicy Bypass -File .\dism.ps1
 ```
 
 ### Configuração: Microsoft-Windows-Subsystem-Linux.
-
 Instala o WSL e habilita o suporte a VirtualMachinePlatform.
+
+### Guia Oficial da Microsoft
+* https://learn.microsoft.com/pt-br/windows/wsl/install
+
 ```powershell
 wsl --install
 ```
@@ -52,6 +55,7 @@ Atualiza o WSL.
 ```powershell
 wsl --update
 ```
+
 ### Download Linux Kernel v2 WSL.
 * https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
 
@@ -60,9 +64,7 @@ wsl --update
 wsl --list --online
 wsl --install -d Debian
 ```
-### Guia Oficial da Microsoft
-* https://learn.microsoft.com/pt-br/windows/wsl/install
-  
+
 ### Docker.
 Download Docker Desktop:
 * https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?
