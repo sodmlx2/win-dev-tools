@@ -62,7 +62,8 @@ Habilita os recursos via script.
 PowerShell -ExecutionPolicy Bypass -File .\wsl.ps1
 ```
 
-### Download Linux Kernel v2 WSL.
+### Linux Kernel v2 WSL.
+Download do patch.
 * https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
 
 ### Instalando uma Distribuição Linux WSL.  
