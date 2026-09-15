@@ -19,7 +19,8 @@ param(
     [string]$InstallDir = "C:\Tools\dependency-check",
     [string]$NvdApiKey = "",          # cole sua NVD API Key aqui ou passe via -NvdApiKey
     [switch]$AddToPath,               # adiciona o bin/ ao PATH do usuario
-    [switch]$SkipInitialUpdate        # pula o update inicial (nao recomendado)
+    [switch]$SkipInitialUpdate,       # pula o update inicial (nao recomendado)
+    [switch]$Force                    # forca o download/reinstalacao mesmo se ja estiver na ultima versao
 )
 
 $ErrorActionPreference = "Stop"
@@ -33,12 +34,10 @@ function Write-Step($msg) {
 Write-Step "Verificando instalacao do Java..."
 $javaCmd = Get-Command java -ErrorAction SilentlyContinue
 if ($javaCmd) {
-    # java -version escreve no stderr; capturamos sem deixar o ErrorActionPreference
-    # global (Stop) abortar o script por causa disso.
-    $prevEap = $ErrorActionPreference
-    $ErrorActionPreference = "Continue"
-    $javaVersionOutput = (& java -version 2>&1) | Out-String
-    $ErrorActionPreference = $prevEap
+    # java -version escreve no stderr por padrao na JVM.
+    # Usar cmd.exe /c "java -version 2>&1" redireciona o stderr internamente para stdout,
+    # evitando que o PowerShell trate o stream de erro como NativeCommandError / ErrorRecord.
+    $javaVersionOutput = (& cmd.exe /c "java -version 2>&1") -join [Environment]::NewLine
     Write-Host $javaVersionOutput
 } else {
     Write-Host "Java nao encontrado no PATH." -ForegroundColor Red
@@ -60,38 +59,58 @@ if (-not $asset) {
     throw "Nao foi possivel localizar o pacote .zip de release. Verifique manualmente: https://github.com/jeremylong/DependencyCheck/releases"
 }
 
-Write-Host "Versao encontrada: $version"
-Write-Host "Arquivo: $($asset.name)"
+Write-Host "Versao mais recente no GitHub: $version"
+Write-Host "Arquivo de release: $($asset.name)"
 
-# 3. Download -------------------------------------------------------------
-$zipPath = Join-Path $env:TEMP $asset.name
-Write-Step "Baixando Dependency-Check $version (isso pode levar alguns minutos)..."
-Invoke-WebRequest -Uri $asset.browser_download_url -OutFile $zipPath -Headers $headers
-
-# 4. Extrair --------------------------------------------------------------
-Write-Step "Extraindo para $InstallDir ..."
-if (-not (Test-Path $InstallDir)) {
-    New-Item -ItemType Directory -Path $InstallDir -Force | Out-Null
-}
-
-$tempExtract = Join-Path $env:TEMP "dc-extract"
-if (Test-Path $tempExtract) { Remove-Item $tempExtract -Recurse -Force }
-Expand-Archive -Path $zipPath -DestinationPath $tempExtract -Force
-
-# a extracao gera uma pasta "dependency-check" dentro do zip
-$extractedFolder = Get-ChildItem $tempExtract | Select-Object -First 1
-Copy-Item -Path (Join-Path $extractedFolder.FullName "*") -Destination $InstallDir -Recurse -Force
-
-Remove-Item $zipPath -Force
-Remove-Item $tempExtract -Recurse -Force
-
+# 3. Verificar se ja esta instalado na versao mais recente --------------
 $binPath = Join-Path $InstallDir "bin"
 $batPath = Join-Path $binPath "dependency-check.bat"
+$needInstall = $true
 
-if (-not (Test-Path $batPath)) {
-    throw "Instalacao falhou: $batPath nao encontrado."
+if ((Test-Path $batPath) -and (-not $Force)) {
+    try {
+        $verOut = (& cmd.exe /c "`"$batPath`" --version 2>&1") -join " "
+        if ($verOut -match '(\d+(\.\d+)+)') {
+            $installedVersion = $matches[1]
+            if ($installedVersion -eq $version) {
+                Write-Host "Dependency-Check ja esta instalado na versao mais recente ($installedVersion) em $InstallDir." -ForegroundColor Green
+                $needInstall = $false
+            } else {
+                Write-Host "Versao instalada ($installedVersion) desatualizada. Atualizando para versao $version..." -ForegroundColor Yellow
+            }
+        }
+    } catch {
+        Write-Warning "Nao foi possivel verificar a versao local instalada. Prosseguindo com instalacao..."
+    }
 }
-Write-Host "Instalado em: $InstallDir" -ForegroundColor Green
+
+# 4. Download e Extracao (se necessario) --------------------------------
+if ($needInstall) {
+    $zipPath = Join-Path $env:TEMP $asset.name
+    Write-Step "Baixando Dependency-Check $version (isso pode levar alguns minutos)..."
+    Invoke-WebRequest -Uri $asset.browser_download_url -OutFile $zipPath -Headers $headers
+
+    Write-Step "Extraindo para $InstallDir ..."
+    if (-not (Test-Path $InstallDir)) {
+        New-Item -ItemType Directory -Path $InstallDir -Force | Out-Null
+    }
+
+    $tempExtract = Join-Path $env:TEMP "dc-extract"
+    if (Test-Path $tempExtract) { Remove-Item $tempExtract -Recurse -Force }
+    Expand-Archive -Path $zipPath -DestinationPath $tempExtract -Force
+
+    # a extracao gera uma pasta "dependency-check" dentro do zip
+    $extractedFolder = Get-ChildItem $tempExtract | Select-Object -First 1
+    Copy-Item -Path (Join-Path $extractedFolder.FullName "*") -Destination $InstallDir -Recurse -Force
+
+    Remove-Item $zipPath -Force
+    Remove-Item $tempExtract -Recurse -Force
+
+    if (-not (Test-Path $batPath)) {
+        throw "Instalacao falhou: $batPath nao encontrado."
+    }
+    Write-Host "Instalado em: $InstallDir" -ForegroundColor Green
+}
 
 # 5. Adicionar ao PATH (opcional) -----------------------------------------
 if ($AddToPath) {
